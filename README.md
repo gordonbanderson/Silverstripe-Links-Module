@@ -1,37 +1,41 @@
-#Silverstripe Links Module
 
-##Installation
+
+#Installation
 
 	git clone git@github.com:gordonbanderson/Silverstripe-Links-Module.git silverstripe-links
+	git checkout -b stable24
 
-##Enable Extension
+#Enable Extension
 
 Enable the extension in mysite/_config.php
 
 	Object::add_extension('SiteTree', 'LinksExtension');
 
 
-##Features
+#Features
 
 This module allows you do do the following
 
 
-###Footer Links
+##Footer Links
 1) Add links to columns in the footer of your page.  To do this
 
-i) Create a page of type FooterLinksFolder
-ii) Create a child page of type LinksFolder for each column
-iii) Add as many links as you like to this page
-iv) In your Page.ss template, add the following
+* Create a page of type FooterLinksFolder
+* Create a child page of type LinksFolder for each column
+* Add as many links as you like to this page
+* In your Page.ss template, add the following
 
     <% include FooterLinks %>
 
 Make sure you have the same number of LinksFolder objects for the number of columns in your footer design.  You can change the HTML output by overriding FooterLinks.ss in the Includes folder of your own theme.
 
 
-###Pages of Certain Types Can Have Links Associated With Them
+##Pages of Certain Types Can Have Links Associated With Them
 2) Add links, e.g. 'Related Links' to pages in your site.
 
 	Link::$classesToAddLinksTo = array('Article');
 
 This will ensure that only pages of ClassName 'Article' will have a Links tab on them when editing.
+
+# Silverstripe Version Compatibility
+2.4 only (tested with 2.4.5+) - stable24 branch

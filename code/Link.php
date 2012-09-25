@@ -31,6 +31,9 @@ class Link extends DataObject {
 
 	function getCMSFields_forPopup() {
 
+		$localeField = new HiddenField('Locale');
+		$localeField->setValue($this->LinksFolder()->Locale);
+
 
 		$fields = new FieldSet(
 			new TextField('Title'),
@@ -40,7 +43,8 @@ class Link extends DataObject {
 
 			new TextField('URL'),
 			new LiveDropdownField( "InternalPageID", "Choose an internal link", "SiteTree" ),
-			new SimpleTinyMCEField( 'Description' )
+			new SimpleTinyMCEField( 'Description' ),
+			$localeField
 		);
 
 		return $fields;

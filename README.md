@@ -1,15 +1,7 @@
-
-
 #Installation
 
 	git clone git@github.com:gordonbanderson/Silverstripe-Links-Module.git silverstripe-links
 	git checkout -b stable24
-
-#Enable Extension
-
-Enable the extension in mysite/_config.php
-
-	Object::add_extension('SiteTree', 'LinksExtension');
 
 
 #Features

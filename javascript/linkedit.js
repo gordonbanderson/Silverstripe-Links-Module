@@ -8,6 +8,9 @@ JQ(document).ready(function() {
 		sel = JQ('#DataObjectManager_Popup_AddForm_LinkType');
 	}
 
+
+
+
 	// hide either the internal or external link editing box
 	if (sel.val() == 'Internal') {
 		JQ('#URL').toggle();

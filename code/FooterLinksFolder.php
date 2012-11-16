@@ -22,4 +22,3 @@ class FooterLinksFolder_Controller extends Page_Controller {
 }
  
 ?>
-

@@ -1,27 +1,32 @@
 JQ = jQuery.noConflict();
 
-JQ(document).ready(function() {
-	// Find the select box, named differently on the update and add forms
-	var sel = JQ('select[id="DataObjectManager_Popup_DetailForm_LinkType"]');
+/*jslint white: true */
+(function($) {
 
-	if (sel.attr('id') == undefined) {
-		sel = JQ('#DataObjectManager_Popup_AddForm_LinkType');
-	}
+	$(document).ready(function() {
+		// Find the select box, named differently on the update and add forms
+		var sel = $('select[id="DataObjectManager_Popup_DetailForm_LinkType"]');
+
+		if (sel.attr('id') == undefined) {
+			sel = $('#DataObjectManager_Popup_AddForm_LinkType');
+		}
 
 
 
 
-	// hide either the internal or external link editing box
-	if (sel.val() == 'Internal') {
-		JQ('#URL').toggle();
-	}  else {
-		JQ('.autocomplete_holder').toggle();
-	};
+		// hide either the internal or external link editing box
+		if (sel.val() == 'Internal') {
+			$('#URL').toggle();
+		}  else {
+			$('.autocomplete_holder').toggle();
+		};
 
-	// toggle boxes on drop down change
-	sel.change(function(e) {
-  		JQ('#URL').toggle();
-  		JQ('.autocomplete_holder').toggle();
+		// toggle boxes on drop down change
+		sel.change(function(e) {
+	  		$('#URL').toggle();
+	  		$('.autocomplete_holder').toggle();
+		});
+
 	});
 
-});
+})(jQuery);

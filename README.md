@@ -29,5 +29,8 @@ Make sure you have the same number of LinksFolder objects for the number of colu
 
 This will ensure that only pages of ClassName 'Article' will have a Links tab on them when editing.
 
+## Dependencies
+DataObjectManager https://github.com/unclecheese/DataObjectManager
+
 # Silverstripe Version Compatibility
 2.4 only (tested with 2.4.5+) - stable24 branch

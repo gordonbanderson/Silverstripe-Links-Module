@@ -8,6 +8,8 @@ class Link extends DataObject {
 		'Title' => 'Text',
 		'Description' => 'HTMLText',
 		"LinkType" => "Enum('External,Internal')",
+		   		  'SortOrder' => 'Int'
+
 	);
 
 
@@ -29,14 +31,14 @@ class Link extends DataObject {
 	}
 
 
-	function getCMSFields_forPopup() {
+ 	public function getCMSFields_forPopup() {
 
 		$localeField = new HiddenField('Locale');
 		$localeField->setValue($this->LinksFolder()->Locale);
 
 
-		$fields = new FieldSet(
-			new TextField('Title'),
+		$fields = new FieldList(
+			new TextField('Title', 'Link title'),
 			new DropdownField( 'LinkType', 'Internal or External Link',
 				singleton('Link')->dbObject( 'LinkType' )->enumValues()
 			),

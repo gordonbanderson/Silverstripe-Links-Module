@@ -1,22 +1,39 @@
 <?php
 
-class LinksExtension extends DataObjectDecorator {
+class LinksExtension extends DataExtension {
 
-  function extraStatics() {
-    return array(
-      'belongs_many_many' => array(
-        'Links' => 'Link',
-      )
-    );
-  }
+  static $belongs_many_many = array( 'Links' => 'Link' );
 
-  public function updateCMSFields( FieldSet &$fields ) {
+  static $belongs_many_many_extraFields = array(
+    'Links' => array(
+      'SortOrder' => "Int"
+    )
+  );
 
-    if ( in_array( $this->owner->qClassName, Link::$classesToAddLinksTo ) ) {
-      $manager = new ManyManyDataObjectManager( $this->owner, "Links", "Link", array( 'Title' => 'Title', 'URL' => 'URL' ), "getCMSFields_forPopup" );
-      $manager->setPluralTitle( 'Links' );
-      $fields->addFieldToTab( "Root.Content.Links", $manager );
+  public function updateCMSFields( FieldList $fields ) {
+
+  /*  if ( in_array( $this->owner->qClassName, Link::$classesToAddLinksTo ) ) {   
+      //wibble
     }
+    */
+
+     if (in_array($this->owner->qClassName, Link::$classesToAddLinksTo)) {
+        //wibble
+        $gridFieldConfig = GridFieldConfig::create()->addComponents(
+          new GridFieldToolbarHeader(),
+          new GridFieldAddNewButton('toolbar-header-right'),
+          new GridFieldSortableHeader(),
+          new GridFieldDataColumns(),
+          new GridFieldPaginator(10),
+          new GridFieldEditButton(),
+          new GridFieldDeleteAction(),
+          new GridFieldDetailForm()
+        );
+
+        $gridField = new GridField("Links", "List of Links:", $this->Links(), $gridFieldConfig);
+        $fields->addFieldToTab("Root.Links", $gridField);
+        
+     }
   }
 
 

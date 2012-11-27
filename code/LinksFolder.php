@@ -17,29 +17,14 @@ class LinksFolder extends Page {
 	);
 */
    function getCMSFields() {
-		$fields = parent::getCMSFields();
-		$fields->renameField("Content", "Description");
-
-
-		$gridFieldConfig = GridFieldConfig::create()->addComponents(
-          new GridFieldToolbarHeader(),
-          new GridFieldAddNewButton('toolbar-header-right'),
-          new GridFieldSortableHeader(),
-          new GridFieldDataColumns(),
-          new GridFieldPaginator(10),
-          new GridFieldEditButton(),
-          new GridFieldDeleteAction('unlinkRelation'),
-          new GridFieldDetailForm()
-//          new GridFieldBulkEditingTools()
-        );
-
-        $gridField = new GridField("Links", "List of Links:", $this->Links()->sort('SortOrder'), $gridFieldConfig);
-        $fields->addFieldToTab("Root.Links", $gridField);
-
-
-
-		//$fields->addFieldToTab('Root.Content.Links', $mng_records);
-
+      $fields = parent::getCMSFields();
+      $fields->renameField("Content", "Description");
+      $gridConfig = GridFieldConfig_RelationEditor::create()->addComponent(new GridFieldSortableRows('SortOrder'));
+      $gridConfig->getComponentByType('GridFieldAddExistingAutocompleter')->setSearchFields(array('URL', 'Title','Description'));
+      //$jsInclude = new GridFieldLinkEdit();
+      //$gridConfig->addComponent($jsInclude);
+      $gridField = new GridField("Links", "List of Links:", $this->Links()->sort('SortOrder'), $gridConfig);
+      $fields->addFieldToTab("Root.Links", $gridField);
 	   return $fields;
 	}
 

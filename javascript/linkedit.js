@@ -16,10 +16,10 @@
 		sel.change(function(e) {
 			if(sel.val() == 'Internal') {
 				$('#URL').addClass('hide');
-				$('#Internal').removeClass('hide');
+				$('#InternalPageID').removeClass('hide');
 			} else {
 				$('#URL').removeClass('hide');
-				$('#Internal').addClass('hide');
+				$('#InternalPageID').addClass('hide');
 			}
 		});
 	});

@@ -1,7 +1,13 @@
 #Installation
 
+## SilverStripe 2.4.x
+
 	git clone git@github.com:gordonbanderson/Silverstripe-Links-Module.git silverstripe-links
 	git checkout -b stable24
+
+## SilverStripe 3.0.x
+	git clone git@github.com:gordonbanderson/Silverstripe-Links-Module.git silverstripe-links
+	git checkout -b stable30
 
 
 #Features
@@ -33,4 +39,5 @@ This will ensure that only pages of ClassName 'Article' will have a Links tab on
 DataObjectManager https://github.com/unclecheese/DataObjectManager
 
 # Silverstripe Version Compatibility
-2.4 only (tested with 2.4.5+) - stable24 branch
+2.4 (tested with 2.4.5+) - stable24 branch
+3.0 (tested with 3.0.2) - stable30 branch

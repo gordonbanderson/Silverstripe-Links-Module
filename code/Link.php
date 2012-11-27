@@ -8,7 +8,7 @@ class Link extends DataObject {
 		'Title' => 'Text',
 		'Description' => 'HTMLText',
 		"LinkType" => "Enum('External,Internal')",
-		   		  'SortOrder' => 'Int'
+		'SortOrder' => 'Int'
 
 	);
 
@@ -26,29 +26,21 @@ class Link extends DataObject {
 	);
 
 
-	function getRequirementsForPopup() {
-		Requirements::javascript( 'silverstripe-links/javascript/linkedit.js' );
-	}
-
-
- 	public function getCMSFields() {
-
- 		Requirements::javascript(LINK_EDIT_TOOLS_PATH . '/javascript/linkedit.js');
-
+	public function getCMSFields() {
+		Requirements::javascript(LINK_EDIT_TOOLS_PATH . '/javascript/linkedit.js');
 
 		$localeField = new HiddenField('Locale');
 		$localeField->setValue($this->LinksFolder()->Locale);
 
-
 		$fields = new FieldList(
 			new TextField('Title', 'Link title'),
-			new DropdownField( 'LinkType', 'Internal or External Link',
-				singleton('Link')->dbObject( 'LinkType' )->enumValues()
+			new DropdownField('LinkType', 'Internal or External Link',
+				singleton('Link')->dbObject('LinkType')->enumValues()
 			),
 
 			new TextField('URL'),
-			new TreeDropdownField( "InternalPageID", "Choose an internal link", "SiteTree" ),
-			new HtmlEditorField( 'Description' ),
+			new TreeDropdownField("InternalPageID", "Choose an internal link", "SiteTree"),
+			new HtmlEditorField('Description'),
 			$localeField
 		);
 
@@ -57,7 +49,7 @@ class Link extends DataObject {
 
 
 	function LoadLink() {
-		$refreshedLink = DataObject::get_one( "Link", "Link_Live.ID=".$this->ID );
+		$refreshedLink = DataObject::get_one("Link", "Link_Live.ID=".$this->ID);
 		return $refreshedLink->URL;
 	}
 
@@ -65,16 +57,16 @@ class Link extends DataObject {
 	function getWebsiteAddress() {
 		$result = $this->URL;
 
-		if ( $this->LinkType == 'Internal' ) {
-			$targetPage = DataObject::get_by_id( 'Page', $this->InternalPageID );
-			if ( $targetPage ) {
+		if ($this->LinkType == 'Internal') {
+			$targetPage = DataObject::get_by_id('Page', $this->InternalPageID);
+			if ($targetPage) {
 				$result = $targetPage->Link();
 			} else {
 				$result = '#';
 			}
 		}
 
-		if ( !$result ) {
+		if (!$result) {
 			$result =  '#';
 		}
 		return $result;

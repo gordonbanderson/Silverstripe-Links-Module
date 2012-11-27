@@ -31,7 +31,10 @@ class Link extends DataObject {
 	}
 
 
- 	public function getCMSFields_forPopup() {
+ 	public function getCMSFields() {
+
+ 		Requirements::javascript(LINK_EDIT_TOOLS_PATH . '/javascript/linkedit.js');
+
 
 		$localeField = new HiddenField('Locale');
 		$localeField->setValue($this->LinksFolder()->Locale);
@@ -44,8 +47,8 @@ class Link extends DataObject {
 			),
 
 			new TextField('URL'),
-			new LiveDropdownField( "InternalPageID", "Choose an internal link", "SiteTree" ),
-			new SimpleTinyMCEField( 'Description' ),
+			new TreeDropdownField( "InternalPageID", "Choose an internal link", "SiteTree" ),
+			new HtmlEditorField( 'Description' ),
 			$localeField
 		);
 

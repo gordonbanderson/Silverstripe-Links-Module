@@ -1,0 +1,15 @@
+{
+	"name": "weboftalent/silverstripe-links",
+	"description": "Silverstripe module to add related links and links to the footer",
+	"keywords": ["silverstripe", "links","weboftalent"],
+	"authors": [
+	{
+		"name": "Gordon Anderson",
+		"email": "gordon@weboftalent.asia"
+	}
+	],
+	"require":
+	{
+		"silverstripe/framework": "3.*"
+	}
+}

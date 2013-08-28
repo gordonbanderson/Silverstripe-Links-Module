@@ -31,12 +31,13 @@ Make sure you have the same number of LinksFolder objects for the number of colu
 ##Pages of Certain Types Can Have Links Associated With Them
 2) Add links, e.g. 'Related Links' to pages in your site.
 
-	Link::$classesToAddLinksTo = array('Article');
+        Object::add_extension('Article','LinksExtension');
+
 
 This will ensure that only pages of ClassName 'Article' will have a Links tab on them when editing.
 
 ## Dependencies
-DataObjectManager https://github.com/unclecheese/DataObjectManager
+If you are using SilverStripe 2.4, DataObjectManager https://github.com/unclecheese/DataObjectManager
 
 # Silverstripe Version Compatibility
 2.4 (tested with 2.4.5+) - stable24 branch

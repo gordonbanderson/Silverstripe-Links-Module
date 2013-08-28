@@ -10,15 +10,9 @@ class LinksExtension extends DataExtension {
     )
   );
 
+
+  /* Edit links */
   public function updateCMSFields( FieldList $fields ) {
-
-  /*  if ( in_array( $this->owner->qClassName, Link::$classesToAddLinksTo ) ) {   
-      //wibble
-    }
-    */
-
-     if (in_array($this->owner->qClassName, Link::$classesToAddLinksTo)) {
-        //wibble
         $gridFieldConfig = GridFieldConfig::create()->addComponents(
           new GridFieldToolbarHeader(),
           new GridFieldAddNewButton('toolbar-header-right'),
@@ -29,12 +23,9 @@ class LinksExtension extends DataExtension {
           new GridFieldDeleteAction(),
           new GridFieldDetailForm()
         );
-
-        $gridField = new GridField("Links", "List of Links:", $this->Links(), $gridFieldConfig);
+        $gridField = new GridField("Links", "List of Links:", $this->owner->Links(), $gridFieldConfig);
         $fields->addFieldToTab("Root.Links", $gridField);
-        
-     }
-  }
+    }
 
 
   public function getFooterLinksFolder() {
@@ -42,5 +33,3 @@ class LinksExtension extends DataExtension {
   }
 
 }
-
-?>

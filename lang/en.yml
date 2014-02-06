@@ -1,0 +1,17 @@
+en:
+  Links:
+    EXTERNAL_LINKS: 'External Links '
+    INTERNAL_LINKS: 'Internal Links '
+  Link:
+    PLURALNAME: 'Links '
+    SINGULARNAME: 'Link '
+    DESCRIPTION: 'An internal or an external link '
+  LinksFolder:
+    PLURALNAME: 'Links Folders '
+    SINGULARNAME: 'Links Folder '
+    DESCRIPTION: 'A folder of links '
+  FooterLinksFolder:
+    PLURALNAME: 'Footer Links Folders '
+    SINGULARNAME: 'Footer Links Folder '
+    DESCRIPTION: 'A folder of links folders, used for the footer '
+

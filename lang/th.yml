@@ -1,0 +1,18 @@
+th:
+  Links:
+    EXTERNAL_LINKS: 'External Links (TH)'
+    INTERNAL_LINKS: 'Internal Links (TH)'
+    BACK_TO_TOP: 'Top'
+  Link:
+    PLURALNAME: 'Links (TH)'
+    SINGULARNAME: 'Link (TH)'
+    DESCRIPTION: 'An internal or an external link (TH)'
+  LinksFolder:
+    PLURALNAME: 'Links Folders (TH)'
+    SINGULARNAME: 'Links Folder (TH)'
+    DESCRIPTION: 'A folder of links (TH)'
+  FooterLinksFolder:
+    PLURALNAME: 'Footer Links Folders (TH)'
+    SINGULARNAME: 'Footer Links Folder (TH)'
+    DESCRIPTION: 'A folder of links folders, used for the footer (TH)'
+

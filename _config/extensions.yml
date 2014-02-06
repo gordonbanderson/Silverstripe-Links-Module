@@ -1,0 +1,9 @@
+---
+Name: weboftalent-links
+---
+LinksFolder:
+  extensions:
+    ['LinksExtension']
+SiteTree:
+  extensions:
+    ['LinksUtilExtension']

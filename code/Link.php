@@ -13,6 +13,10 @@ class Link extends DataObject {
 	);
 
 
+	private static $icon = 'weboftalent-links/icons/link.png'; 
+
+
+
 	static $classesToAddLinksTo = array('Page');
 
 
@@ -33,8 +37,9 @@ class Link extends DataObject {
 		$localeField->setValue($this->LinksFolder()->Locale);
 
 		$fields = new FieldList(
-			new TextField('Title', 'Link title'),
-			new DropdownField('LinkType', 'Internal or External Link',
+			new TextField('Title', _t('Link.LINK_TITLE', 'Link title')),
+			new DropdownField('LinkType',
+				_t('LINK_TYPE', 'Internal or External Link'),
 				singleton('Link')->dbObject('LinkType')->enumValues()
 			),
 

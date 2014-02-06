@@ -14,6 +14,9 @@ class FooterLinksFolder extends Page {
     	'ShowInSearch' => 0
     );
 
+    private static $icon = 'weboftalent-links/icons/link.png'; 
+
+
 
 }
  

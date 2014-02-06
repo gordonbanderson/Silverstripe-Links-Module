@@ -26,10 +26,4 @@ class LinksExtension extends DataExtension {
         $gridField = new GridField("Links", "List of Links:", $this->owner->Links(), $gridFieldConfig);
         $fields->addFieldToTab("Root.Links", $gridField);
     }
-
-
-  public function getFooterLinksFolder() {
-    return DataObject::get_one( 'FooterLinksFolder' );
-  }
-
 }

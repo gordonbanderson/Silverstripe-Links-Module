@@ -2,6 +2,7 @@
 	"name": "weboftalent/silverstripe-links",
 	"description": "Silverstripe module to add related links and links to the footer",
 	"keywords": ["silverstripe", "links","weboftalent"],
+	"type": "silverstripe-module",
 	"authors": [
 	{
 		"name": "Gordon Anderson",

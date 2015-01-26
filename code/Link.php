@@ -38,16 +38,22 @@ class Link extends DataObject {
 
 		$fields = new FieldList(
 			new TextField('Title', _t('Link.LINK_TITLE', 'Link title')),
-			new DropdownField('LinkType',
+			$linktypefield = new DropdownField('LinkType',
 				_t('LINK_TYPE', 'Internal or External Link'),
 				singleton('Link')->dbObject('LinkType')->enumValues()
 			),
 
-			new TextField('URL'),
-			new TreeDropdownField("InternalPageID", "Choose an internal link", "SiteTree"),
+			$urlfield = new TextField('URL'),
+			$pagefield = new TreeDropdownField("InternalPageID", "Choose an internal link", "SiteTree"),
 			new HtmlEditorField('Description'),
 			$localeField
 		);
+
+		if ($this->LinkType === 'Internal') {
+			$urlfield->addExtraClass('hide wobbling');
+		} else {
+			$pagefield->addExtraClass('hide wibbling');
+		}
 
 		return $fields;
 	}

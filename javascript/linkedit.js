@@ -15,14 +15,14 @@
 					$('#InternalPageID').addClass('hide');
 				}
 			}
-			
+
 		});
 
 		// this is run first time only, to prime the form
 		var sel = $('#Form_ItemEditForm_LinkType');
 
-		// hide either the internal or external link editing box depending on which link type the link is
-		// (internal or external)
+		// hide either the internal or external link editing box depending on
+		// which link type the link is (internal or external)
 		if(sel.val() == 'Internal') {
 			$('#URL').addClass('hide');
 		} else {

@@ -12,13 +12,9 @@ class Link extends DataObject {
 
 	);
 
-
-	private static $icon = 'weboftalent-links/icons/link.png'; 
-
-
+	private static $icon = 'weboftalent-links/icons/link.png';
 
 	static $classesToAddLinksTo = array('Page');
-
 
 	static $has_one = array(
 		'LinksFolder' => 'LinksFolder',
@@ -84,5 +80,3 @@ class Link extends DataObject {
 	}
 
 }
-
-?>

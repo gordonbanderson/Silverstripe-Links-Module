@@ -55,6 +55,11 @@ class Link extends DataObject {
 	}
 
 
+	function PlainTextDescription() {
+		return Convert::html2raw($this->Description);
+	}
+
+
 	function LoadLink() {
 		$refreshedLink = DataObject::get_one("Link", "Link_Live.ID=".$this->ID);
 		return $refreshedLink->URL;

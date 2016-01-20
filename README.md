@@ -32,12 +32,8 @@ It could be used for example in providing related links on a blog article.
 composer require "weboftalent/links:~1"
 ```
 ##Usage
-
-For more documentation about the module see the provided documentation located
-inside the docs folder.
+A Links tab now exists for all SiteTree pages.  If links need to be added to any
+other DataObject simply add the `LinksExtension` using the normal method.
 
 ##Requirements
 * SilverStripe 3.1 or 3.2
-
-##TODO
-* Add other mapping services such as Leaflet

@@ -1,0 +1,7 @@
+---
+name: weboftalent-links
+After: 'framework/*','cms/*'
+---
+SiteTree:
+  extensions:
+     ['LinksExtension']

@@ -1,4 +1,5 @@
 <?php
 
-class FooterLinksFolderTest extends SapphireTest {
+class FooterLinksFolderTest extends SapphireTest
+{
 }

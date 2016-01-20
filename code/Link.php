@@ -1,77 +1,75 @@
 <?php
 /**
- * Defines the Link page type
+ * Defines the Link page type.
  */
-class Link extends DataObject {
-	static $db = array(
-		'URL' => 'Text',
-		'Title' => 'Text',
-		'Description' => 'HTMLText',
-		"LinkType" => "Enum('External,Internal')",
-		'SortOrder' => 'Int'
+class Link extends DataObject
+{
+    public static $db = array(
+        'URL' => 'Text',
+        'Title' => 'Text',
+        'Description' => 'HTMLText',
+        'LinkType' => "Enum('External,Internal')",
+        'SortOrder' => 'Int',
 
-	);
+    );
 
+    public static $classesToAddLinksTo = array('Page');
 
-	static $classesToAddLinksTo = array('Page');
+    public static $has_one = array(
+        'LinksFolder' => 'LinksFolder',
+        'InternalPage' => 'SiteTree',
+    );
 
+    public static $many_many = array(
+        'Pages' => 'SiteTree',
+    );
 
-	static $has_one = array(
-		'LinksFolder' => 'LinksFolder',
-		'InternalPage' => 'SiteTree'
-	);
+    public function getCMSFields()
+    {
+        Requirements::javascript(LINK_EDIT_TOOLS_PATH.'/javascript/linkedit.js');
 
-	public static $many_many = array(
-		"Pages" => "SiteTree"
-	);
+        $localeField = new HiddenField('Locale');
+        $localeField->setValue($this->LinksFolder()->Locale);
 
+        $fields = new FieldList(
+            new TextField('Title', 'Link title'),
+            new DropdownField('LinkType', 'Internal or External Link',
+                singleton('Link')->dbObject('LinkType')->enumValues()
+            ),
 
-	public function getCMSFields() {
-		Requirements::javascript(LINK_EDIT_TOOLS_PATH . '/javascript/linkedit.js');
+            new TextField('URL'),
+            new TreeDropdownField('InternalPageID', 'Choose an internal link', 'SiteTree'),
+            new HtmlEditorField('Description'),
+            $localeField
+        );
 
-		$localeField = new HiddenField('Locale');
-		$localeField->setValue($this->LinksFolder()->Locale);
+        return $fields;
+    }
 
-		$fields = new FieldList(
-			new TextField('Title', 'Link title'),
-			new DropdownField('LinkType', 'Internal or External Link',
-				singleton('Link')->dbObject('LinkType')->enumValues()
-			),
+    public function LoadLink()
+    {
+        $refreshedLink = DataObject::get_one('Link', 'Link_Live.ID='.$this->ID);
 
-			new TextField('URL'),
-			new TreeDropdownField("InternalPageID", "Choose an internal link", "SiteTree"),
-			new HtmlEditorField('Description'),
-			$localeField
-		);
+        return $refreshedLink->URL;
+    }
 
-		return $fields;
-	}
+    public function getWebsiteAddress()
+    {
+        $result = $this->URL;
 
+        if ($this->LinkType == 'Internal') {
+            $targetPage = DataObject::get_by_id('Page', $this->InternalPageID);
+            if ($targetPage) {
+                $result = $targetPage->Link();
+            } else {
+                $result = '#';
+            }
+        }
 
-	function LoadLink() {
-		$refreshedLink = DataObject::get_one("Link", "Link_Live.ID=".$this->ID);
-		return $refreshedLink->URL;
-	}
+        if (!$result) {
+            $result = '#';
+        }
 
-
-	function getWebsiteAddress() {
-		$result = $this->URL;
-
-		if ($this->LinkType == 'Internal') {
-			$targetPage = DataObject::get_by_id('Page', $this->InternalPageID);
-			if ($targetPage) {
-				$result = $targetPage->Link();
-			} else {
-				$result = '#';
-			}
-		}
-
-		if (!$result) {
-			$result =  '#';
-		}
-		return $result;
-	}
-
+        return $result;
+    }
 }
-
-?>

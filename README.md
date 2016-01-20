@@ -1,43 +1,26 @@
-#Installation
+# Links Manager
 
-## SilverStripe 2.4.x
+## Maintainers
 
-	git clone git@github.com:gordonbanderson/Silverstripe-Links-Module.git silverstripe-links
-	git checkout -b stable24
+* Gordon Anderson (Nickname: nontgor)
+	<gordon.b.anderson@gmail.com>
 
-## SilverStripe 3.0.x
-	git clone git@github.com:gordonbanderson/Silverstripe-Links-Module.git silverstripe-links
-	git checkout -b stable30
+##Introduction
 
+This module provides a facility for adding and editing links on any DataObject.
+It could be used for example in providing related links on a blog article.
+ 
+##Installation
+```bash
+composer require "weboftalent/links:~1"
+```
+##Usage
 
-#Features
+For more documentation about the module see the provided documentation located
+inside the docs folder.
 
-This module allows you do do the following
+##Requirements
+* SilverStripe 3.1 or 3.2
 
-
-##Footer Links
-1) Add links to columns in the footer of your page.  To do this
-
-* Create a page of type FooterLinksFolder
-* Create a child page of type LinksFolder for each column
-* Add as many links as you like to this page
-* In your Page.ss template, add the following
-
-    <% include FooterLinks %>
-
-Make sure you have the same number of LinksFolder objects for the number of columns in your footer design.  You can change the HTML output by overriding FooterLinks.ss in the Includes folder of your own theme.
-
-
-##Pages of Certain Types Can Have Links Associated With Them
-2) Add links, e.g. 'Related Links' to pages in your site.
-
-	Link::$classesToAddLinksTo = array('Article');
-
-This will ensure that only pages of ClassName 'Article' will have a Links tab on them when editing.
-
-## Dependencies
-DataObjectManager https://github.com/unclecheese/DataObjectManager
-
-# Silverstripe Version Compatibility
-2.4 (tested with 2.4.5+) - stable24 branch
-3.0 (tested with 3.0.2) - stable30 branch
+##TODO
+* Add other mapping services such as Leaflet

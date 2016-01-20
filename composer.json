@@ -1,0 +1,21 @@
+{
+	"name": "weboftalent/links",
+	"description": "Add editable links to any DataObject",
+	"type": "silverstripe-module",
+	"keywords": ["silverstripe", "links", "hyperlinks"],
+	"authors": [
+		{
+			"name": "Gordon Anderson",
+			"email": "gordon.b.anderson@gmail.com",
+			"homepage": "https://github.com/gordonbanderson/Silverstripe-Links-Module",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"silverstripe/cms": "~3.1"
+	},
+    "support": {
+        "issues": "https://github.com/gordonbanderson/Silverstripe-Links-Module/issues"
+    },
+	"license": "BSD-3-Clause"
+}

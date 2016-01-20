@@ -29,7 +29,7 @@ It could be used for example in providing related links on a blog article.
  
 ##Installation
 ```bash
-composer require "weboftalent/links:~1"
+composer require "weboftalent/links:~4"
 ```
 ##Usage
 A Links tab now exists for all SiteTree pages.  If links need to be added to any

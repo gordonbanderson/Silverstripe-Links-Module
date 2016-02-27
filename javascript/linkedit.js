@@ -7,19 +7,19 @@
 		// hide either the internal or external link editing box depending on which link type the link is
 		// (internal or external)
 		if(sel.val() == 'Internal') {
-			$('#URL').addClass('hide');
+			$('#Form_ItemEditForm_URL_Holder').hide();
 		} else {
-			$('#InternalPageID').addClass('hide');
+			$('#Form_ItemEditForm_InternalPageID_Holder').hide();
 		}
 
 		// toggle boxes on drop down change
 		sel.change(function(e) {
 			if(sel.val() == 'Internal') {
-				$('#URL').addClass('hide');
-				$('#InternalPageID').removeClass('hide');
+				$('#Form_ItemEditForm_URL_Holder').hide();
+				$('#Form_ItemEditForm_InternalPageID_Holder').show();
 			} else {
-				$('#URL').removeClass('hide');
-				$('#InternalPageID').addClass('hide');
+				$('#Form_ItemEditForm_URL_Holder').show();
+				$('#Form_ItemEditForm_InternalPageID_Holder').hide();
 			}
 		});
 	});

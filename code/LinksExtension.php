@@ -1,4 +1,5 @@
 <?php
+namespace WebOfTalent\Links;
 
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\GridField\GridFieldConfig;
@@ -16,9 +17,9 @@ use SilverStripe\ORM\DataExtension;
 
 class LinksExtension extends DataExtension
 {
-    public static $belongs_many_many = array('Links' => 'Link');
+    private static $belongs_many_many = array('Links' => 'Link');
 
-    public static $belongs_many_many_extraFields = array(
+    private static $belongs_many_many_extraFields = array(
             'Links' => array(
             'SortOrder' => 'Int',
         )

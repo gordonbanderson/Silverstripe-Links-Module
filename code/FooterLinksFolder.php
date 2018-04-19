@@ -1,17 +1,18 @@
 <?php
+namespace WebOfTalent\Links;
 
 use PageController;
 /**
 * Defines the Link page type.
 */
-class FooterLinksFolder extends Page
+class FooterLinksFolder extends \Page
 {
-    public static $db = array();
+    private static $db = array();
 
     // a footer links folder shall contain links folders - these will be rendered as columns in the footer
-    public static $allowed_children = array('LinksFolder');
+    private static $allowed_children = array('LinksFolder');
 
-    public static $defaults = array(
+    private static $defaults = array(
         'ShowInMenus' => 0,
         'ShowInSearch' => 0,
     );

@@ -1,6 +1,8 @@
 <?php
+namespace WebOfTalent\Links;
 
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\View\Requirements;
 use SilverStripe\Forms\HiddenField;
 use SilverStripe\Forms\TextField;
@@ -13,7 +15,7 @@ use SilverStripe\ORM\DataObject;
  */
 class Link extends DataObject
 {
-    public static $db = array(
+    private static $db = array(
         'URL' => 'Text',
         'Title' => 'Text',
         'Description' => 'HTMLText',
@@ -22,14 +24,14 @@ class Link extends DataObject
 
     );
 
-    public static $classesToAddLinksTo = array('Page');
+    private static $classesToAddLinksTo = array('Page');
 
-    public static $has_one = array(
-        'LinksFolder' => 'LinksFolder',
+    private static $has_one = array(
+        'LinksFolder' => 'WebOfTalent\Links\LinksFolder',
         'InternalPage' => SiteTree::class,
     );
 
-    public static $many_many = array(
+    private static $many_many = array(
         'Pages' => SiteTree::class,
     );
 
@@ -43,12 +45,12 @@ class Link extends DataObject
         $fields = new FieldList(
             new TextField('Title', 'Link title'),
             new DropdownField('LinkType', 'Internal or External Link',
-                singleton('Link')->dbObject('LinkType')->enumValues()
+                singleton('WebOfTalent\Links\Link')->dbObject('LinkType')->enumValues()
             ),
 
             new TextField('URL'),
             new TreeDropdownField('InternalPageID', 'Choose an internal link', SiteTree::class),
-            new HtmlEditorField('Description'),
+            new HTMLEditorField('Description'),
             $localeField
         );
 
@@ -57,7 +59,7 @@ class Link extends DataObject
 
     public function LoadLink()
     {
-        $refreshedLink = DataObject::get_one('Link', 'Link_Live.ID='.$this->ID);
+        $refreshedLink = DataObject::get_one('WebOfTalent\Links\Link', 'Link_Live.ID='.$this->ID);
 
         return $refreshedLink->URL;
     }

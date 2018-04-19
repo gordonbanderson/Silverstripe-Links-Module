@@ -1,4 +1,6 @@
 <?php
+
+use PageController;
 /**
 * Defines the Link page type.
 */
@@ -15,6 +17,6 @@ class FooterLinksFolder extends Page
     );
 }
 
-class FooterLinksFolder_Controller extends Page_Controller
+class FooterLinksFolder_Controller extends PageController
 {
 }

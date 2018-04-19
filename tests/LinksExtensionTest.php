@@ -1,5 +1,7 @@
 <?php
 
+use SilverStripe\Dev\SapphireTest;
+
 class LinksExtensionTest extends SapphireTest
 {
     public function testUpdateCMSFields()

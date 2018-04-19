@@ -1,4 +1,13 @@
 <?php
+
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\View\Requirements;
+use SilverStripe\Forms\HiddenField;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\DropdownField;
+use SilverStripe\Forms\TreeDropdownField;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\ORM\DataObject;
 /**
  * Defines the Link page type.
  */
@@ -17,11 +26,11 @@ class Link extends DataObject
 
     public static $has_one = array(
         'LinksFolder' => 'LinksFolder',
-        'InternalPage' => 'SiteTree',
+        'InternalPage' => SiteTree::class,
     );
 
     public static $many_many = array(
-        'Pages' => 'SiteTree',
+        'Pages' => SiteTree::class,
     );
 
     public function getCMSFields()
@@ -38,7 +47,7 @@ class Link extends DataObject
             ),
 
             new TextField('URL'),
-            new TreeDropdownField('InternalPageID', 'Choose an internal link', 'SiteTree'),
+            new TreeDropdownField('InternalPageID', 'Choose an internal link', SiteTree::class),
             new HtmlEditorField('Description'),
             $localeField
         );

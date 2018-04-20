@@ -20,7 +20,13 @@
 			"WebOfTalent\\Links\\Tests\\": "tests/"
 		}
 	},
-    "support": {
+	"extra": {
+		"expose": [
+			"icons",
+			"javascript"
+		]
+	},
+	"support": {
         "issues": "https://github.com/gordonbanderson/Silverstripe-Links-Module/issues"
     },
 	"license": "BSD-3-Clause"

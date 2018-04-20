@@ -29,7 +29,7 @@ It could be used for example in providing related links on a blog article.
  
 ## Installation
 ```bash
-composer require "weboftalent/links:~6"
+composer require "weboftalent/links"
 ```
 ##Usage
 ## Model Admin
@@ -44,10 +44,10 @@ A links tab can be added to any object using the LinksExtension class
 ```php
 <ul>
 <% loop $getLinksFolder('header') %>
-	<li><a href="$Link">$Title</a></li>
+	<li><a href="$URL">$Title</a></li>
 <% end_loop %>
 </ul>
 ```
 
 ## Requirements
-* SilverStripe 4.*, for 3.* use ~5 in the above composer command.
+* SilverStripe 4.*, for 3.* append `:~5` to the above composer command.

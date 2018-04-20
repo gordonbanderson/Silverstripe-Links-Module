@@ -22,18 +22,32 @@
 * Gordon Anderson (Nickname: nontgor)
 	<gordon.b.anderson@gmail.com>
 
-##Introduction
+## Introduction
 
 This module provides a facility for adding and editing links on any DataObject.
 It could be used for example in providing related links on a blog article.
  
-##Installation
+## Installation
 ```bash
-composer require "weboftalent/links:~4"
+composer require "weboftalent/links:~6"
 ```
 ##Usage
-A Links tab now exists for all SiteTree pages.  If links need to be added to any
-other DataObject simply add the `LinksExtension` using the normal method.
+## Model Admin
+Links folders and links can be edited in the admin area under `/admin/linksfolders` - each folder
+has a slug (so that it can be referenced from templates) and a tab of links.  One can provide
+either internal (default) or external links.
 
-##Requirements
-* SilverStripe 3.1 or 3.2
+## Links Extension
+A links tab can be added to any object using the LinksExtension class
+
+## Templates
+```php
+<ul>
+<% loop $getLinksFolder('header') %>
+	<li><a href="$Link">$Title</a></li>
+<% end_loop %>
+</ul>
+```
+
+## Requirements
+* SilverStripe 4.*, for 3.* use ~5 in the above composer command.

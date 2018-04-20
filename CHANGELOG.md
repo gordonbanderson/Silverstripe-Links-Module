@@ -1,5 +1,8 @@
 # Change Log
 
+## [6.0.1](https://github.com/gordonbanderson/Silverstripe-Links-Module/tree/6.0.1) (2018-04-20)
+[Full Changelog](https://github.com/gordonbanderson/Silverstripe-Links-Module/compare/6.0.0...6.0.1)
+
 ## [6.0.0](https://github.com/gordonbanderson/Silverstripe-Links-Module/tree/6.0.0) (2018-04-20)
 [Full Changelog](https://github.com/gordonbanderson/Silverstripe-Links-Module/compare/5.0.1...6.0.0)
 

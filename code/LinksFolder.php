@@ -26,6 +26,8 @@ class LinksFolder extends DataObject
         'Links' => 'WebOfTalent\Links\Link']
     ;
 
+    private static $summary_fields = ['Slug'];
+
     /**
      * Render the model admin
      *

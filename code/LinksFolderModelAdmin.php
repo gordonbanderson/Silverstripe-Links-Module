@@ -13,7 +13,5 @@ class LinksFolderModelAdmin extends ModelAdmin
 
     private static $menu_title = 'Links Folders';
 
-    private static $summary_fields = ['Slug'];
-
     private static $menu_icon = 'weboftalent/links: /icons/link-icon.png';
 }

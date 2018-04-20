@@ -16,7 +16,10 @@ class GetLinksFolderExtension extends DataExtension
    public function getLinksFolder($slug)
    {
        $folder = LinksFolder::get()->filter(['Slug' => $slug])->first();
-       return $folder->Links();
+       if (!empty($folder)) {
+           return $folder->Links();
+       }
+
    }
 
 }

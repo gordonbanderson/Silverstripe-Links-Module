@@ -15,16 +15,31 @@ use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DataExtension;
 
+/**
+ * Add links to an existing object just as a page
+ *
+ * Class LinksExtension
+ * @package WebOfTalent\Links
+ */
 class LinksExtension extends DataExtension
 {
-    private static $belongs_many_many = array('Links' => 'Link');
+    /** @var array  */
+    private static $has_many = [
+        'Links' => 'WebOfTalent\Links\Link'
+    ];
 
-    private static $belongs_many_many_extraFields = array(
-            'Links' => array(
-            'SortOrder' => 'Int',
-        )
-    );
+    /** @var array  */
+    private static $belongs_many_many_extraFields = [
+            'Links' => [
+                'SortOrder' => 'Int',
+            ]
+    ];
 
+    /**
+     * Render links editing in CMS
+     *
+     * @param FieldList $fields
+     */
     public function updateCMSFields(FieldList $fields)
     {
         if (in_array($this->owner->qClassName, Link::$classesToAddLinksTo)) {
@@ -44,8 +59,4 @@ class LinksExtension extends DataExtension
         }
     }
 
-    public function getFooterLinksFolder()
-    {
-        return DataObject::get_one('FooterLinksFolder');
-    }
 }

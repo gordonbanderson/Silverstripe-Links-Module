@@ -15,29 +15,32 @@ use SilverStripe\ORM\DataObject;
  */
 class Link extends DataObject
 {
-    private static $db = array(
+    private static $table_name = 'Link';
+
+    private static $db = [
         'URL' => 'Text',
         'Title' => 'Text',
         'Description' => 'HTMLText',
         'LinkType' => "Enum('External,Internal')",
         'SortOrder' => 'Int',
 
-    );
+    ];
 
-    private static $classesToAddLinksTo = array('Page');
+    private static $classesToAddLinksTo = ['Page'];
 
-    private static $has_one = array(
+    private static $has_one = [
         'LinksFolder' => 'WebOfTalent\Links\LinksFolder',
-        'InternalPage' => SiteTree::class,
-    );
+        'InternalPage' => SiteTree::class
+    ];
 
-    private static $many_many = array(
-        'Pages' => SiteTree::class,
-    );
+    private static $many_many = [
+        'Pages' => SiteTree::class
+    ];
 
     public function getCMSFields()
     {
-        Requirements::javascript(LINK_EDIT_TOOLS_PATH.'/javascript/linkedit.js');
+
+        Requirements::javascript('weboftalent/links:/javascript/linkedit.js');
 
         $localeField = new HiddenField('Locale');
         $localeField->setValue($this->LinksFolder()->Locale);

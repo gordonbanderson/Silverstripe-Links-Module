@@ -9,9 +9,4 @@ class LinksExtensionTest extends SapphireTest
     {
         $this->markTestSkipped('TODO');
     }
-
-    public function testGetFooterLinksFolder()
-    {
-        $this->markTestSkipped('TODO');
-    }
 }
